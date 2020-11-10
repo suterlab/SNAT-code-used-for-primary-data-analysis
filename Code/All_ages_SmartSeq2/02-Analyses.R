@@ -13,11 +13,11 @@ figNumer <- 1
 scData <- readRDS(here("Results", "SS2_P1P5P14P60_merged", "01-Seurat", "scData.rds"))
 #scData <- readRDS("/srv/GT/analysis/p2497/seurat_P1P5P14P60_merged_scData_vplots.rds")
 scData <- UpdateSeuratObject(scData)
-scData <- RenameIdents(scData, "0"="iSC", "1"="nmSC", "2"="mSC2", "3"="tSC",
+scData <- RenameIdents(scData, "0"="iSC", "1"="nm(R)SC", "2"="mSC2", "3"="tSC",
                        "4"="mSC1", "5"="pmSC", "6"="prol. SC", "7"="mSC3")
 Idents(scData) <- factor(Idents(scData),
                          levels=c("prol. SC", "iSC", "pmSC", "mSC1", "mSC2",
-                                  "mSC3", "tSC", "nmSC"))
+                                  "mSC3", "tSC", "nm(R)SC"))
 scData <- RunUMAP(scData, dims = 1:20)
 scData$Plate <- str_extract(colnames(scData), "P\\d+_(1|2)")
 scData$timepoint <- sub("_(1|2)$", "", scData$Plate)

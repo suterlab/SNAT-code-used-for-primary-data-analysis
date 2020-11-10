@@ -1,6 +1,7 @@
 
 cellCols <- c("iSC"="#e5721c", "pmSC"="#9a5268", "prol. SC"="#ef2700",
-              "mSC1"="#4e57b2", "tSC"="#71790d", "mSC2"="#003399", "nmSC"="#00af00",
+              "mSC1"="#4e57b2", "tSC"="#71790d", "mSC2"="#003399",
+              "nmSC"="#00af00", "nm(R)SC"="#00af00",
               "mSC3"="#067cfc", "mSC"="#4e57b2")
 timeCols <- c("E13.5"="#f38df2", "E17.5"="#4cd3f2",
               "P1"="#d7b73a", "P5"="#7aa1e3",
