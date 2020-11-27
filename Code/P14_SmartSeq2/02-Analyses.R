@@ -11,7 +11,7 @@ figNumer <- 1
 # Upgrade Seurat v2 object to v3 object
 scData <- readRDS(here("Results", "SS2_P14_woFilter50k", "01-Seurat", "scData.rds"))
 scData <- UpdateSeuratObject(scData)
-scData <- RenameIdents(scData, "0"="tSC", "1"="mSC1", "2"="pmSC", "3"="prol. SC")
+scData <- RenameIdents(scData, "0"="tSC", "1"="mSC", "2"="pmSC", "3"="prol. SC")
 scData <- RunUMAP(scData, dims = 1:7)
 scData$Plate <- sub("_[[:alnum:]]+$", "", colnames(scData))
 saveRDS(scData, file=file.path(resDir, "scData.rds"))

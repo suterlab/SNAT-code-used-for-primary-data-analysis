@@ -12,7 +12,9 @@ figNumer <- 1
 # Upgrade Seurat v2 object to v3 object
 scData <- readRDS(here("Results", "SS2_P60_BatchCorrection_woFilter50k", "01-CCA", "scData.rds"))
 scData <- UpdateSeuratObject(scData)
-scData <- RenameIdents(scData, "0"="nm(R)SC", "1"="mSC2", "2"="mSC3", "3"="prol. SC")
+scData <- RenameIdents(scData,
+                       "0"="nm(R)SC cluster 1", "1"="mSC cluster 1",
+                       "2"="mSC cluster 2", "3"="nm(R)SC cluster 2")
 scData <- RunUMAP(scData, reduction = "cca.aligned", dims = 1:15)
 scData$Plate <- str_extract(colnames(scData), "P60_(1|2)")
 saveRDS(scData, file=file.path(resDir, "scData.rds"))

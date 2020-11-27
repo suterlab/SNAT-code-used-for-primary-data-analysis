@@ -60,9 +60,10 @@ scData <- RunPCA(object = scData, pc.genes = scData@var.genes, do.print = TRUE,
                  pcs.print = 1:5, genes.print = 5)
 scData <- ProjectPCA(object = scData, do.print = FALSE)
 scData <- FindClusters(object = scData, reduction.type = "pca", dims.use = 1:7,
-                       resolution = 0.25, print.output = 0, save.SNN = TRUE,
+                       resolution = 0.3, print.output = 0, save.SNN = TRUE,
                        force.recalc=TRUE)
 PrintFindClustersParams(object = scData)
 set.seed(1)
 scData <- RunTSNE(object = scData, dims.use = 1:7, do.fast = TRUE, perplexity = 30)
 saveRDS(scData, file=file.path(resDir, "scData.rds"))
+
