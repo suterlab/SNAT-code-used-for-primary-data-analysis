@@ -12,11 +12,16 @@ figNumer <- 1
 # Upgrade Seurat v2 object to v3 object
 scData <- readRDS(here("Results", "SS2_P60_woFilter50k", "01-Seurat", "scData.rds"))
 scData <- UpdateSeuratObject(scData)
-scData <- RenameIdents(scData, "0"="nm(R)SC", "2"="nm(R)SC", "1"="mSC2", "3"="mSC3")
+#scData <- RenameIdents(scData, "0"="nm(R)SC", "2"="nm(R)SC", "1"="mSC2", "3"="mSC3")
 scData <- RunUMAP(scData, dims = 1:7)
 scData$Plate <- str_extract(colnames(scData), "P60_(1|2)")
 saveRDS(scData, file=file.path(resDir, "scData.rds"))
 
+p <- DimPlot(scData, reduction = "tsne", label=TRUE) +
+  theme(legend.position = "none")
+save_plot(filename=file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),
+                                            "-ClusteringPlot_woLabels.pdf")),
+          p, base_asp = 1.2)
 # Clustering plot
 p1 <- DimPlot(scData, cols=cellCols, reduction = "umap", label=TRUE) +
   theme(legend.position = "none")
