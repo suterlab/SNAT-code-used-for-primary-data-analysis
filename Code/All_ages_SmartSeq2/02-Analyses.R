@@ -24,9 +24,9 @@ scData$timepoint <- sub("_(1|2)$", "", scData$Plate)
 saveRDS(scData, file=file.path(resDir, "scData.rds"))
 
 # Clustering plot
-p1 <- DimPlot(scData, cols=cellCols, reduction = "umap", label=TRUE) +
+p1 <- DimPlot(scData, cols=cellCols_SS2Merged, reduction = "umap", label=TRUE) +
   theme(legend.position = "none")
-p2 <- DimPlot(scData, cols=cellCols, reduction = "tsne", label=TRUE) +
+p2 <- DimPlot(scData, cols=cellCols_SS2Merged, reduction = "tsne", label=TRUE) +
   theme(legend.position = "none")
 p <- plot_grid(p1, p2, labels="AUTO", ncol=2)
 save_plot(filename=file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),

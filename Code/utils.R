@@ -4,6 +4,10 @@ cellCols <- c("iSC"="#e5721c", "pmSC"="#9a5268", "prol. SC"="#ef2700","tSC"="#71
               "mSC1"="#4e57b2", "mSC2"="#003399", "mSC3"="#067cfc", "mSC"="#4e57b2",
               "mSC cluster 1"="#003399", "mSC cluster 2"="#067cfc", "mSC cluster 3"="#4e57b2",
               "nm(R)SC cluster 1"="#00af00", "nm(R)SC cluster 2"="#006600")
+cellCols_SS2Merged <- c("iSC"="#e5721c", "pmSC"="#9a5268", "prol. SC"="#ef2700","tSC"="#71790d",
+                        "nm(R)SC"="#00af00",
+                        "mSC cluster 1"="#4e57b2", "mSC cluster 2"="#003399", "mSC cluster 3"="#067cfc")
+
 timeCols <- c("E13.5"="#f38df2", "E17.5"="#4cd3f2",
               "P1"="#d7b73a", "P5"="#7aa1e3",
               "P14"="#65ce8d", "P24"="#f48cc4", "P60"="#adc33c")
