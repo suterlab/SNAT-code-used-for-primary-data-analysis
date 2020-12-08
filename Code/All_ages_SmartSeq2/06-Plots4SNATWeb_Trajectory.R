@@ -16,7 +16,8 @@ scData_all <- UpdateSeuratObject(scData_all)
 
 ### smoothing spline: myelinating trajectory
 scData_m <- subset(scData, idents = c("prol. SC", "iSC", "pmSC",
-                                      "mSC1", "mSC2", "mSC3"))
+                                      "mSC cluster 1", "mSC cluster 2",
+                                      "mSC cluster 3"))
 set.seed(1)
 log_cd <- GetAssayData(scData_m)
 a <- fastICA(log_cd, 2, alg.typ = "deflation", fun = "logcosh", alpha = 1,
@@ -39,7 +40,7 @@ for (g in rownames(scData_m)){
 
   p <- ggplot(toPlot, aes(-pseudotime, gene_exp)) +
     geom_point(aes(colour=clusters)) +
-    scale_color_manual(values=cellCols) +
+    scale_color_manual(values=cellCols_SS2Merged) +
     xlab("myelinating trajectory pseudotime") +
     ylab("Expression (ln)") +
     ggtitle(g) +
@@ -59,7 +60,7 @@ for (g in rownames(scData_m)){
 }
 
 ### smoothing spline: non-myelinating trajectory
-scData_m <- subset(scData, idents = c("prol. SC", "iSC", "tSC", "nmSC"))
+scData_m <- subset(scData, idents = c("prol. SC", "iSC", "tSC", "nm(R)SC"))
 set.seed(1)
 log_cd <- GetAssayData(scData_m)
 a <- fastICA(log_cd, 2, alg.typ = "deflation", fun = "logcosh", alpha = 1,
@@ -82,7 +83,7 @@ for (g in rownames(scData_m)){
 
   p <- ggplot(toPlot, aes(-pseudotime, gene_exp)) +
     geom_point(aes(colour=clusters)) +
-    scale_color_manual(values=cellCols) +
+    scale_color_manual(values=cellCols_SS2Merged) +
     xlab("non-myelinating trajectory pseudotime") +
     ylab("Expression (ln)") +
     ggtitle(g) +
