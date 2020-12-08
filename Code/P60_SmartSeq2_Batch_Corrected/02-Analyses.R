@@ -15,7 +15,7 @@ scData <- UpdateSeuratObject(scData)
 scData <- RenameIdents(scData,
                        "0"="nm(R)SC cluster 1", "1"="mSC cluster 1",
                        "2"="mSC cluster 2", "3"="nm(R)SC cluster 2")
-scData <- RunUMAP(scData, reduction = "cca.aligned", dims = 1:15)
+scData <- RunUMAP(scData, reduction = "cca.aligned", dims = 1:12)
 scData$Plate <- str_extract(colnames(scData), "P60_(1|2)")
 saveRDS(scData, file=file.path(resDir, "scData.rds"))
 
@@ -89,7 +89,7 @@ save_plot(filename=file.path(resDir, paste0(formatC(figNumer, width=2, flag="0")
 figNumer <- figNumer + 1
 
 # markers, heatmap with merged mSC
-scData <- RenameIdents(scData, "mSC2"="mSC", "mSC3"="mSC")
+scData <- RenameIdents(scData, "mSC cluster 1"="mSC", "mSC cluster 2"="mSC")
 markers <- FindAllMarkers(scData, only.pos=TRUE, return.thresh=0.01)
 saveRDS(markers, file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),
                                           "-pos_markers_mergedmSC.rds")))
