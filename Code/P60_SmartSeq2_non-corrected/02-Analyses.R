@@ -12,7 +12,6 @@ figNumer <- 1
 # Upgrade Seurat v2 object to v3 object
 scData <- readRDS(here("Results", "SS2_P60_woFilter50k", "01-Seurat", "scData.rds"))
 scData <- UpdateSeuratObject(scData)
-#scData <- RenameIdents(scData, "0"="nm(R)SC", "2"="nm(R)SC", "1"="mSC2", "3"="mSC3")
 scData <- RunUMAP(scData, dims = 1:7)
 scData$Plate <- str_extract(colnames(scData), "P60_(1|2)")
 saveRDS(scData, file=file.path(resDir, "scData.rds"))
@@ -22,20 +21,6 @@ p <- DimPlot(scData, reduction = "tsne", label=TRUE) +
 save_plot(filename=file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),
                                             "-ClusteringPlot_woLabels.pdf")),
           p, base_asp = 1.2)
-# Clustering plot
-p1 <- DimPlot(scData, cols=cellCols, reduction = "umap", label=TRUE) +
-  theme(legend.position = "none")
-p2 <- DimPlot(scData, cols=cellCols, reduction = "tsne", label=TRUE) +
-  theme(legend.position = "none")
-p3 <- DimPlot(scData, reduction = "umap", label=TRUE, group.by="res.0.25") +
-  theme(legend.position = "none")
-p4 <- DimPlot(scData, reduction = "tsne", label=TRUE, group.by="res.0.25") +
-  theme(legend.position = "none")
-p <- plot_grid(p1, p2, p3, p4, labels="AUTO", ncol=2)
-save_plot(filename=file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),
-                                            "-ClusteringPlot.pdf")),
-          p, ncol=2, nrow=2, base_asp = 1.2)
-figNumer <- figNumer + 1
 
 # QC plots
 p1 <- FeaturePlot(object=scData, features="nFeature_RNA",
