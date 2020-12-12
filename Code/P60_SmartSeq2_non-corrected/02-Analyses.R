@@ -59,8 +59,7 @@ markers <- FindAllMarkers(scData, only.pos=TRUE, return.thresh=0.01)
 saveRDS(markers, file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),
                                           "-pos_markers.rds")))
 top10 <- markers %>% group_by(cluster) %>% top_n(10, avg_logFC)
-p <- DoHeatmap(scData, group.colors=cellCols[levels(Idents(scData))],
-               features = top10$gene, raster=FALSE)
+p <- DoHeatmap(scData, features = top10$gene, raster=FALSE)
 save_plot(filename=file.path(resDir, paste0(formatC(figNumer, width=2, flag="0"),
                                             "-pos_markers.pdf")),
           p, base_height = 6, base_width = 4)

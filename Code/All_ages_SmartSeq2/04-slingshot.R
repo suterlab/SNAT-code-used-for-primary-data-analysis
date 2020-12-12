@@ -18,9 +18,9 @@ sce <- readRDS(file.path(resDir, "sce.rds"))
 CNEr:::savefig(filename = file.path(resDir, "slingshot"), type="pdf",
                colormodel = "srgb", height = 6*2.54, width=12*2.54)
 par(mfrow=c(1,2))
-plot(reducedDims(sce)$TSNE, col = cellCols[as.character(sce$ident)], pch=16, asp = 1)
+plot(reducedDims(sce)$TSNE, col = cellCols_SS2Merged[as.character(sce$ident)], pch=16, asp = 1)
 lines(SlingshotDataSet(sce), lwd=3, type = 'lineages')
-plot(reducedDims(sce)$TSNE, col = cellCols[as.character(sce$ident)], pch=16, asp = 1)
+plot(reducedDims(sce)$TSNE, col = cellCols_SS2Merged[as.character(sce$ident)], pch=16, asp = 1)
 lines(SlingshotDataSet(sce), lwd=3)
 dev.off()
 

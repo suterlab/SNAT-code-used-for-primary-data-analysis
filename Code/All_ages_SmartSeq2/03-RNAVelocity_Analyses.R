@@ -19,7 +19,7 @@ ldat <- lapply(ldat,function(x) {
 
 scData <- readRDS(here("Results", "SS2_P1P5P14P60_merged", "02-Analyses", "scData.rds"))
 emb <- Embeddings(object = scData, reduction = "tsne")
-cell.colors <- setNames(cellCols[as.character(Idents(scData))], colnames(scData))
+cell.colors <- setNames(cellCols_SS2Merged[as.character(Idents(scData))], colnames(scData))
 plot(emb[, "tSNE_1"], emb[, "tSNE_2"], col=cell.colors, pch=16)
 
 emat_cutoff <- 5
@@ -82,8 +82,8 @@ show.velocity.on.embedding.cor(emb, rvel.qf, n=100, scale='sqrt',
                                               alpha=cell.alpha),
                                cex=cell.cex, arrow.scale=arrow.scale,
                                arrow.lwd=1)
-legend("topleft", legend=names(cellCols),
-       pch=19, col=cellCols)
+legend("topleft", legend=names(cellCols_SS2Merged),
+       pch=19, col=cellCols_SS2Merged)
 
 show.velocity.on.embedding.cor(emb, rvel.qf, n=100, scale='sqrt',
                                cell.colors=ac(cell.colors,
@@ -92,8 +92,8 @@ show.velocity.on.embedding.cor(emb, rvel.qf, n=100, scale='sqrt',
                                show.grid.flow=TRUE,
                                min.grid.cell.mass=0.5, grid.n=grid.n,
                                arrow.lwd=2)
-legend("topleft", legend=names(cellCols),
-       pch=19, col=cellCols)
+legend("topleft", legend=names(cellCols_SS2Merged),
+       pch=19, col=cellCols_SS2Merged)
 dev.off()
 
 ### Velocity estimates variant 2
@@ -117,14 +117,14 @@ show.velocity.on.embedding.cor(emb, rvel, n=100, scale='sqrt',
                                               alpha=cell.alpha),
                                cex=cell.cex, arrow.scale=arrow.scale,
                                arrow.lwd=1, n.cores=8L)
-legend("topleft", legend=names(cellCols),
-       pch=19, col=cellCols)
+legend("topleft", legend=names(cellCols_SS2Merged),
+       pch=19, col=cellCols_SS2Merged)
 show.velocity.on.embedding.cor(emb, rvel, n=100, scale='sqrt',
                                cell.colors=ac(cell.colors,
                                               alpha=0.7),
                                cex=cell.cex, arrow.scale=arrow.scale,
                                show.grid.flow=TRUE, min.grid.cell.mass=0.5,
                                grid.n=grid.n, arrow.lwd=2, n.cores=8L)
-legend("topleft", legend=names(cellCols),
-       pch=19, col=cellCols)
+legend("topleft", legend=names(cellCols_SS2Merged),
+       pch=19, col=cellCols_SS2Merged)
 dev.off()
